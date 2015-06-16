@@ -13,7 +13,7 @@ class wordProducer(object):
 
 
     def random_words(self, source_symbol):
-       wordlst = ["Data","Insight", "Dale","Thomas","Gabriela","Steph"]
+       wordlst = ["books","apple", "car","dog","cat","fish"]
        ln_cnt = 0
        str_fmt ="{};{}"
        #rndword = random.choice(wordlst) + "," + random.choice(wordlst) + "," + random.choice(wordlst)

@@ -22,8 +22,8 @@ if __name__ == "__main__":
 
     sc = SparkContext(appName="WordCount")
     ssc = StreamingContext(sc, 2)
-    #zkQuorum = ("52.8.175.21:2181","52.8.178.31:2181","52.8.49.129:2181","52.8.177.10:2181")
-    zkQuorum = "52.8.175.21:2181"
+    #zkQuorum = ("public-dns:2181","public-dns:2181","public-dns:2181","public-dns:2181")
+    zkQuorum = "public dns:2181"
 
     #brokers, topic = sys.argv[1:]
     kvs = KafkaUtils.createStream(ssc,zkQuorum,"consumer-random",{"random_words": 1} )
