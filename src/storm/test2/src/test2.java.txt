@@ -45,7 +45,7 @@ public class test2 {
    }
 
     private TransactionalTridentKafkaSpout buildSpout() {
-      BrokerHosts zk = new ZkHosts("52.8.175.21:2181");
+      BrokerHosts zk = new ZkHosts("public-ip:2181");
       TridentKafkaConfig spoutConf = new TridentKafkaConfig(zk, "random_words");
       spoutConf.scheme = new SchemeAsMultiScheme(new StringScheme());
       return new TransactionalTridentKafkaSpout(spoutConf);
