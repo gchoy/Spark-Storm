@@ -15,8 +15,9 @@ conf.set("spark.executor.memory", "1g")
 
 if __name__ == "__main__":
     
+    batch_size = 2
     sc = SparkContext(appName="WordCount")
-    ssc = StreamingContext(sc, 2)
+    ssc = StreamingContext(sc, int(batch_size)
     #zkQuorum = "public-ip:2181, public-ip:2181, public-ip:2181, public-ip:2181"
     zkQuorum = "public-ip:2181"
 

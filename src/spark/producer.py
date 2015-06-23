@@ -15,6 +15,7 @@ class wordProducer(object):
     def random_words(self, source_symbol):
        wordlst = ["books","apple", "car","dog","cat","fish"]
        ln_cnt = 0
+       wrd_cnt = 0
        #str_fmt ="{};{}"
        #rndword = random.choice(wordlst) + "," + random.choice(wordlst) + "," + random.choice(wordlst)
 
@@ -26,7 +27,7 @@ class wordProducer(object):
            #sys.stdout.flush()
            self.producer.send_messages("random_words", source_symbol, msg_info)
            ln_cnt += 1
-
+           wrd_cnt + = ln_cnt*len(rndword)
 
 if __name__ == "__main__":
     args = sys.argv
