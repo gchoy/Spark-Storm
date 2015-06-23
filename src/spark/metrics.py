@@ -26,7 +26,7 @@ def wordRate(l):
     word_rate = word_counts.map(lambda (x,y): (float(y) / int(batch_size)))
         #.map(lambda word: (word,1)) \
         #.map(lambda (x, y): (float(y) / int(batch_size))).collect()
-    return word_rate.pprint()
+    return word_rate
 
     #return individualRate.pprint()
     #return cnts/2
