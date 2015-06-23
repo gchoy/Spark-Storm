@@ -18,15 +18,16 @@ countrate = 0
 #start = time.time()
 
 
-def wordRate(l):
+def wordRate(l,seconds):
 
-    word_counts = l.flatMap(lambda line: line.split(",")) \
-        .map(lambda word: (word,1)).count()
+    word_pairs = l.flatMap(lambda line: line.split(",")) \
+        .map(lambda word: (word,1))
 
-    word_rate = word_counts.map(lambda (x,y): (float(y) / int(batch_size)))
+    word_rate = word_pairs.map(lambda (x,y): (float(y) / seconds)).count()
         #.map(lambda word: (word,1)) \
         #.map(lambda (x, y): (float(y) / int(batch_size))).collect()
-    return word_rate
+    word_rate.pprint()
+    #return word_rate
 
     #return individualRate.pprint()
     #return cnts/2
@@ -45,8 +46,13 @@ if __name__ == "__main__":
     counts = lines.flatMap(lambda line: line.split(",")) \
         .map(lambda word: (word, 1)) \
         .reduceByKey(lambda a, b: a+b)
+        
+    counts.pprint()
+    wordRate(lines,batch_size)   
 
 
     #end = time.time()
     #time_diff = end - start
 
+    ssc.start()
+    ssc.awaitTermination()
