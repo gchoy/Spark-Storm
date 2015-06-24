@@ -20,12 +20,10 @@ def wordRate(l,seconds):
 
     word_pairs = l.flatMap(lambda line: line.split(",")) \
         .map(lambda word: (word,1))
-
+    
     number_pairs = word_pairs.count()
     word_rate = number_pairs.map(lambda x: (float(x) / seconds))
     word_rate.pprint()
-
-
 
 if __name__ == "__main__":
 
