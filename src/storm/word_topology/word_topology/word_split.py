@@ -7,19 +7,19 @@ log = logging.getLogger("Splitting Words")
 
 class SplitBolt(SimpleBolt):
 
-    OUTPUT_FIEDS = ["word"]
+    OUTPUT_FIELDS = ["word"]
 
     def process_tuple(self, tup):
         line, = tup.values
         log.debug(line)
-        for word in line.split():
+        for word in line.split(): 
             log.debug(word)
             self.emit((word,), anchors=[tup])
 
 
 
 
-if __name__ == '__main__':
+if __name__ == '__main__': 
     logging.basicConfig(
         level = logging.DEBUG,
         filename = '/tmp/word_count_split_words.log',

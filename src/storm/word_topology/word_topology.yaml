@@ -2,7 +2,7 @@
 #
 name: word_topology
 #
-workers: 3
+workers: 3 
 
 topology:
 
@@ -17,9 +17,9 @@ topology:
             # ZooKeeper connection string. Comma-separated list of ZooKeeper
             # servers.
             # Required.
-            zk_hosts: ec2-52-8-175-21.us-west-1.compute.amazonaws.com:2181,ec2-52-8-178-31.us-west-1.compute.amazonaws.com:2181,ec2-52-8-149-129.us-west-1.compute.amazonaw$
+            zk_hosts: ec2-52-8-175-21.us-west-1.compute.amazonaws.com:2181,ec2-52-8-178-31.us-west-1.compute.amazonaws.com:2181,ec2-52-8-149-129.us-west-1.compute.amazonaws.com:2181,ec2-52-8-177-10.us-west-1.compute.amazonaws.com:2181
 
-
+            
             # Root path in ZooKeeper to store consumer offsets.
             # Defaults to: /pyleus-kafka-offsets/<topology name>
             zk_root: /pyleus-kafka-offsets/word_topology
@@ -43,4 +43,12 @@ topology:
         tick_freq_secs: 5.0
         groupings:
             - shuffle_grouping: kafka-spout
-
+            
+- bolt:
+        name: word_count
+        module: word_topology.word_count
+        groupings:
+            - fields_grouping: 
+                component: word_split
+                fields:   
+                    -  word

@@ -9,17 +9,17 @@ log = logging.getLogger('Word Count')
 Counter = namedtuple("Counter", "word count")
 
 
-class CountWordsBolt(SimpleBolt):
+class CountWordsBolt(SimpleBolt): 
 
 
     OUTPUT_FIELDS = Counter
+    
 
-
-    def initialize(self):
+    def initialize(self): 
         self.words = defaultdict(int)
 
 
-    def process_tuple(self, tup):
+    def process_tuple(self, tup): 
         word, = tup.values
         self.words[words] += 1
         log.debug("{0} {1}".format(word, self.words[word]))
@@ -35,4 +35,6 @@ if __name__ == '__main__':
     )
 
     CountWordsBolt().run()
+
+    
 
