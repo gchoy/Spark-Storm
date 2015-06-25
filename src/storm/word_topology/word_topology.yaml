@@ -37,11 +37,10 @@ topology:
 #           # Defaults to the earliest offset time in the stream.
             start_offset_time: 2147483648
 
-#- bolt:
-#        name: word_bolt
-#        module: word_topology.word_bolt
-#        tick_freq_secs: 5.0
-#        groupings:
-#            - shuffle_grouping: kafka-spout
-#
+- bolt:
+        name: word_split
+        module: word_topology.word_split
+        tick_freq_secs: 5.0
+        groupings:
+            - shuffle_grouping: kafka-spout
 
