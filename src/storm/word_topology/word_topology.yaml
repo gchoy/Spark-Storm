@@ -1,0 +1,47 @@
+#Implements a kafka spout
+#
+name: word_topology
+#
+workers: 3
+
+topology:
+
+- spout:
+        name: kafka-spout
+        type: kafka
+        options:
+            # The Kafka topic to stream from.
+            # Required.
+            topic: "random_words"
+
+            # ZooKeeper connection string. Comma-separated list of ZooKeeper
+            # servers.
+            # Required.
+            zk_hosts: ec2-52-8-175-21.us-west-1.compute.amazonaws.com:2181,ec2-52-8-178-31.us-west-1.compute.amazonaws.com:2181,ec2-52-8-149-129.us-west-1.compute.amazonaw$
+
+
+            # Root path in ZooKeeper to store consumer offsets.
+            # Defaults to: /pyleus-kafka-offsets/<topology name>
+            zk_root: /pyleus-kafka-offsets/word_topology
+
+            # Kafka consumer ID.
+#           # Defaults to: pyleus-<topology name>
+            consumer_id: pyleus-word_topology
+
+            # Whether the initial offset should be that specified by
+#           # start_offset_time (true) or the head of the stream (false).
+#           # Defaults to false.
+            from_start: false
+
+            #The offset time to start with if from_start is true.
+#           # Defaults to the earliest offset time in the stream.
+            start_offset_time: 2147483648
+
+#- bolt:
+#        name: word_bolt
+#        module: word_topology.word_bolt
+#        tick_freq_secs: 5.0
+#        groupings:
+#            - shuffle_grouping: kafka-spout
+#
+
