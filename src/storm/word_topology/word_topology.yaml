@@ -17,7 +17,7 @@ topology:
             # ZooKeeper connection string. Comma-separated list of ZooKeeper
             # servers.
             # Required.
-            zk_hosts: ec2-52-8-175-21.us-west-1.compute.amazonaws.com:2181,ec2-52-8-178-31.us-west-1.compute.amazonaws.com:2181,ec2-52-8-149-129.us-west-1.compute.amazonaws.com:2181,ec2-52-8-177-10.us-west-1.compute.amazonaws.com:2181
+            zk_hosts: public-DNS:2181,public-DNS:2181,public-dns:2181,public-DNS:2181
 
             
             # Root path in ZooKeeper to store consumer offsets.

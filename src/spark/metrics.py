@@ -1,7 +1,8 @@
-#Wordcount program with word rate per batch size and other mertrics
 from pyspark import SparkContext, SparkConf
 from pyspark.streaming import StreamingContext
 from pyspark.streaming.kafka import KafkaUtils
+from operator import add
+from uuid import uuid1
 import sys
 import time
 
@@ -11,44 +12,43 @@ conf.setMaster("local")
 conf.setAppName("WordCount")
 conf.set("spark.executor.memory", "1g")
 
-batch_size = 2
+batch_size = 1
 countrate = 0
-#start = time.time()
+
 
 
 def wordRate(l,seconds):
-
+    
     word_pairs = l.flatMap(lambda line: line.split(",")) \
         .map(lambda word: (word,1))
     
     number_pairs = word_pairs.count()
+
     word_rate = number_pairs.map(lambda x: (float(x) / seconds))
     word_rate.pprint()
+    stamped_rate = word_rate.map(lambda x: (x,time.time()))    
+    #stamped_rate.saveAsPickleFile("hdfs://mnt/tmp/rate.txt")
+    stamped_rate.pprint()
 
 if __name__ == "__main__":
-
-
+    
+      
     sc = SparkContext(appName="WordCount")
     ssc = StreamingContext(sc, int(batch_size))
-    zkQuorum = "public-ip:2181,public-ip:2181,public-ip:2181,public-ip:2181"
-    #zkQuorum = "public-ip:2181"
+    zkQuorum = "52.8.175.21:2181,52.8.178.31:2181,52.8.149.129:2181,52.8.177.10:2181"
+    #zkQuorum = "52.8.175.21:2181"
 
     kvs = KafkaUtils.createStream(ssc,zkQuorum,"consumer-random",{"random_words": 1} )
     lines = kvs.map(lambda x: x[1])
     counts = lines.flatMap(lambda line: line.split(",")) \
         .map(lambda word: (word, 1)) \
         .reduceByKey(lambda a, b: a+b)
-
-
-    #end = time.time()
-    #time_diff = end - start
+    
 
     counts.pprint()
-    wordRate(lines,batch_size)   
-
-
-    #end = time.time()
-    #time_diff = end - start
-
+    wordRate(lines,batch_size)
+    
+      
     ssc.start()
     ssc.awaitTermination()
+
