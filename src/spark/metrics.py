@@ -16,19 +16,23 @@ batch_size = 1
 countrate = 0
 
 
-
 def wordRate(l,seconds):
     
     word_pairs = l.flatMap(lambda line: line.split(",")) \
         .map(lambda word: (word,1))
-    
-    number_pairs = word_pairs.count()
 
+    number_pairs = word_pairs.count()
+    time_stamp = time.time()
+
+    stamped_total = number_pairs.map(lambda x: (x, time_stamp))
+    stamped_total.pprint()
+    
     word_rate = number_pairs.map(lambda x: (float(x) / seconds))
-    word_rate.pprint()
-    stamped_rate = word_rate.map(lambda x: (x,time.time()))    
-    #stamped_rate.saveAsPickleFile("hdfs://mnt/tmp/rate.txt")
-    stamped_rate.pprint()
+    #word_rate.pprint()
+    stamped_rate = word_rate.map(lambda x: (x, time_stamp))
+    #stamped_rate.saveAsTextFile(rateFile)
+    stamped_rate.pprint()   
+
 
 if __name__ == "__main__":
     
