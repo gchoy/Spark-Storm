@@ -6,7 +6,7 @@
 - <a href= "https://github.com/gchoy/Spark-Storm/blob/master/README.md#introduction">Introduction</a>
 - <a href= "https://github.com/gchoy/Spark-Storm/blob/master/README.md#data">Data</a>
 - <a href= "https://github.com/gchoy/Spark-Storm/blob/master/README.md#presentation">Presentation</a>
-- <a href= "https://github.com/gchoy/Spark-Storm/blob/master/README.md#instructions-to-setup-this-pipline">Instructions to Set up this Pipeline</a>
+- <a href= "https://github.com/gchoy/Spark-Storm/blob/master/README.md#instructions to setup this pipline">Instructions to Set up this Pipeline</a>
 
 #Introduction
 In this data engineering project we tested two processing frameworks: Spark streaming and Storm. The two main goals were:
