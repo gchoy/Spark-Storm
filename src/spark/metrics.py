@@ -18,6 +18,9 @@ countrate = 0
 
 def wordRate(l,seconds):
     
+    """Calculates the record per second and throughput
+       and stamps the time"""
+    
     word_pairs = l.flatMap(lambda line: line.split(",")) \
         .map(lambda word: (word,1))
 
@@ -30,7 +33,6 @@ def wordRate(l,seconds):
     word_rate = number_pairs.map(lambda x: (float(x) / seconds))
     #word_rate.pprint()
     stamped_rate = word_rate.map(lambda x: (x, time_stamp))
-    #stamped_rate.saveAsTextFile(rateFile)
     stamped_rate.pprint()   
 
 
