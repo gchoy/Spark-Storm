@@ -30,27 +30,27 @@ A distributed AWS cluster of four ec2 nodes was used. The components ingestion, 
 
 #Instructions to Set up this Pipeline
 
--Spin 4 ec2 nodes, install Hadoop, Zookeeper, Kafka, Spark, and Storm 
+- Spin 4 ec2 nodes, install Hadoop, Zookeeper, Kafka, Spark, and Storm 
 
--Start Zookeeper and Kafka
+- Start Zookeeper and Kafka
 
--Select which processing framework you want to test, Spark Streaming or Storm.
+- Select which processing framework you want to test, and start it.
 
--Install python packages:
+- Install python packages:
 ```sudo pip install kafka-python pyleus ```
 
--Run the Kafka producer:
+- Run the Kafka producer:
 ```python spark/producer.py```
 
--Run pyspark script:
+- Run pyspark script:
 ```$SPARK_HOME/bin/spark-submit metrics.py```
 
--Or:
+**Or:**
 
--Build storm topology:
+- Build storm topology:
 ```pyleus word_topology.yaml```
 
--Submit pyleus topology:
+- Submit pyleus topology:
 ```pyleus submit -n  52.8.175.21 word_topology.jar```
 
 **Note:** Zookeeper and Kafka must be running before starting the producer, or metrics.py or submiting the Storm topology.
