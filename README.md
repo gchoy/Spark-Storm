@@ -4,6 +4,7 @@
 
 #Table of Contents
 - <a href= "https://github.com/gchoy/Spark-Storm/blob/master/README.md#introduction">Introduction</a>
+- <a href= "https://github.com/gchoy/Spark-Storm/blob/master/README.md#testing setup">Testing Setup</a>
 - <a href= "https://github.com/gchoy/Spark-Storm/blob/master/README.md#data">Data</a>
 - <a href= "https://github.com/gchoy/Spark-Storm/blob/master/README.md#presentation">Presentation</a>
 - <a href= "https://github.com/gchoy/Spark-Storm/blob/master/README.md#instructions to setup this pipline">Instructions to Set up this Pipeline</a>
@@ -12,8 +13,10 @@
 In this data engineering project we tested two processing frameworks: Spark streaming and Storm. The two main goals were:
 - To understand the differences between Spark Streaming and Storm.
 - Test the processing frameworks under different loads and measure throughput.
+
+#Testing Setup
 - **Testing Conditions:** Tests on each framework were not run concurrently, that is only one framework was tested at a time.
-- **Metrics to be measured:** Amount of data processed (load) and records per second (throughput).
+- **Metrics to be measured:** Amount of data processed / records per second (throughput).
 - **Caveat:** The results obtained must be taken with precaution due to processing and semantic differences between Spark streaming and Storm.       
 
 #Data 
