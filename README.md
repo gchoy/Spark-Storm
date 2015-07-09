@@ -27,7 +27,7 @@ Word count is a often a popular choice when testing frameworks.
 Other uses cases that I would like to implement would be a sorting algorithm and/or a graph.
 
 #Cluster Setup
-A distributed AWS cluster of four ec2 m3.medium nodes were used. The  ingestion components, and processing frameworks were configured and run in distributed mode, with one master and three workers for Spark streaming, and one nimbus and three supervisors for Storm.
+Two distributed AWS clusters of four ec2 m3.medium nodes were used. The  ingestion components, and processing frameworks were configured and run in distributed mode, with one master and three workers for Spark streaming, and one nimbus and three supervisors for Storm.
 
 #Instructions to Set up this Pipeline
 
