@@ -17,7 +17,7 @@ In this data engineering project we tested two processing frameworks: Spark stre
 #Testing Setup
 - **Testing Conditions:** Each framework was set in separate clusters of 4 nodes on AWS.
 - **Metrics that were measured:** Amount of data processed / records per second (throughput).
-- **Time: Tests were run for aproximately 10 minutes in both pipelines.
+- **Time:** Tests were run for aproximately 10 minutes in both pipelines.
 - **Caveat:** The results obtained must be taken with precaution due to processing and semantic differences between Spark streaming and Storm.     
 
 <img src="https://github.com/gchoy/Spark-Storm/blob/master/images/pipeline.png" style="width:304px;height:228px;">
